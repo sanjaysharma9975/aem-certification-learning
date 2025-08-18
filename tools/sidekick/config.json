@@ -4,14 +4,38 @@
       "id": "asset-library",
       "title": "My Assets",
       "environments": ["edit"],
-      "url": "https://experience.adobe.com/solutions/CQ-helix-assets-addon/static-assets/resources/asset-selector.html?rail=false",
+      "url": "https://experience.adobe.com/solutions/CQ-helix-assets-addon/static-assets/resources/asset-selector.html",
       "isPalette": true,
       "includePaths": ["**.docx**"],
       "passConfig": true,
-      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:800px; height: calc(100vh - 60px)"
+      "blockName": [
+        { "mimeType": "video/*", "value": "Core Embed" }
+      ],
+      "copyMode": [
+        { "mimeType": "image/*", "value": "reference" }
+      ],
+      "blockTemplate": [
+        {
+          "mimeType": "video/*",
+          "value": "<table border='1' style=\"width:100%\"> <tr><td style=\"background-color:#2986cc;color:#fff\">${blockName}</td></tr><tr><td><img src=\"${posterUrl}\" alt=\"${name}\"><br/><a href=\"${videoUrl}\">${name}</a></td></tr> </table>"
+        }
+      ],
+      "filterSchema": [
+        {
+          "header": "Assets Tags",
+          "groupKey": "AssetTagsGroup",
+          "fields": [
+            { "element": "taggroup", "name": "property=metadata.application.xcm:keywords.id", "columns": 3 }
+          ]
+        }
+      ],
+      "assetDomainMapping": {
+        "delivery-p123111-e1235123.adobeaemcloud.com": "mediapreprod.store.testdomain.com"
+      }
     }
   ]
 }
+
 
 
 // {
